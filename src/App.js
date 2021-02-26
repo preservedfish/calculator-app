@@ -16,7 +16,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Calculator</h1>
       <form onSubmit={addCalculation}>
         <input
