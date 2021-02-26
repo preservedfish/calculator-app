@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, InputGroup } from 'react-bootstrap';
+import { Form, Button, InputGroup, Card, ListGroup } from 'react-bootstrap';
 import firebaseService from './services/firebase';
 
 const App = () => {
@@ -19,7 +19,7 @@ const App = () => {
   return (
     <div className="container">
       <h1>Calculator</h1>
-      <Form className="w-50" onSubmit={addCalculation}>
+      <Form className="w-50 mb-3" onSubmit={addCalculation}>
         <InputGroup>
           <Form.Control
             type="text"
@@ -38,13 +38,21 @@ const App = () => {
           decimals work too.
         </Form.Text>
       </Form>
-      <ul>
-        {calculations.map((object) => (
-          <li key={object.id}>
-            {object.calculation} = {object.result}
-          </li>
-        ))}
-      </ul>
+      <Card style={{ width: '18rem' }}>
+        <ListGroup variant="flush">
+          {calculations.map((object) =>
+            calculations.indexOf(object) === 0 ? (
+              <ListGroup.Item active key={object.id}>
+                {object.calculation} = {object.result}
+              </ListGroup.Item>
+            ) : (
+              <ListGroup.Item key={object.id}>
+                {object.calculation} = {object.result}
+              </ListGroup.Item>
+            )
+          )}
+        </ListGroup>
+      </Card>
     </div>
   );
 };
