@@ -1,24 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, InputGroup, Card, ListGroup } from 'react-bootstrap';
+
 import firebaseService from './services/firebase';
+import Notification from './components/Notification';
 
 const App = () => {
   const [calculations, setCalculations] = useState([]);
   const [newCalculation, setNewCalculation] = useState('');
+  const [show, setShow] = useState(false);
+  const [alert, setAlert] = useState('');
 
   useEffect(() => {
-    firebaseService.getCalculations(setCalculations);
+    try {
+      firebaseService.getCalculations(setCalculations);
+    } catch (error) {
+      setAlert(error.message);
+    }
   }, []);
 
   const addCalculation = (event) => {
     event.preventDefault();
-    firebaseService.createCalculation(newCalculation);
-    setNewCalculation('');
+    try {
+      firebaseService.createCalculation(newCalculation);
+      setNewCalculation('');
+      setShow(false);
+    } catch (error) {
+      setAlert(error.message);
+      setShow(true);
+    }
   };
 
   return (
     <div className="container">
       <h1>Calculator</h1>
+      {show && <Notification setShow={setShow} alert={alert} />}
       <Form className="w-50 mb-3" onSubmit={addCalculation}>
         <InputGroup>
           <Form.Control
