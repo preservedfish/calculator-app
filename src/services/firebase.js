@@ -20,23 +20,18 @@ const db = firebase.database();
 
 const createCalculation = (calculation) => {
   const sanitizedInput = calculation.replace(/[^0-9*/%.()+-]/gim, '').trim();
-  try {
-    // eslint-disable-next-line no-eval
-    const result = eval(sanitizedInput);
-    db.ref('calculations').push({
-      calculation: sanitizedInput,
-      result,
-    });
-  } catch (e) {
-    console.error(e);
-  }
+  // eslint-disable-next-line no-eval
+  const result = eval(sanitizedInput);
+  db.ref('calculations').push({
+    calculation: sanitizedInput,
+    result,
+  });
 };
 
 const getCalculations = (setCalculations) => {
   db.ref('calculations').on('value', (snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
-      console.log(data);
       const transformedData = Object.keys(data)
         .map((key) => ({
           id: key,
@@ -47,7 +42,7 @@ const getCalculations = (setCalculations) => {
         transformedData.slice(0, transformedData.length <= 10 ? undefined : 10)
       );
     } else {
-      console.log("Couldn't fetch calculations");
+      throw new Error("Couldn't fetch calculations");
     }
   });
 };
