@@ -41,8 +41,6 @@ const getCalculations = (setCalculations) => {
       setCalculations(
         transformedData.slice(0, transformedData.length <= 10 ? undefined : 10)
       );
-    } else {
-      throw new Error("Couldn't fetch calculations");
     }
   });
 };

@@ -17,7 +17,7 @@ const App = () => {
     } catch (error) {
       setAlert(error.message);
     }
-  }, []);
+  }, [newCalculation]);
 
   const addCalculation = (event) => {
     event.preventDefault();
