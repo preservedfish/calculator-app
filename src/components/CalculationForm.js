@@ -25,6 +25,12 @@ const CalculationForm = ({
       You can use operators such as +, -, *, **, /, %. Parentheses and decimals
       work too.
     </Form.Text>
+    <Form.Text>
+      <i>
+        Past calculations are hidden to first-time visitors unless they enter a
+        calculation or refresh the page.
+      </i>
+    </Form.Text>
   </Form>
 );
 
