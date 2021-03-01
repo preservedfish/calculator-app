@@ -5,9 +5,9 @@ A calculator app built for an exercise. Mainly uses React and Firebase. Hosted h
 The last 10 calculations are displayed and synced among users. The calculator supports basic Javascript arithmetic, `+, -, *, **, /, %`.
 
 ## Technologies used
-[React](https://reactjs.org/docs/getting-started.html) as the main library, [Firebase](https://firebase.google.com/docs) for the database, [Jest](https://jestjs.io/docs/en/getting-started) for testing
+[React](https://reactjs.org/docs/getting-started.html) as the main library, [Firebase](https://firebase.google.com/docs) for the database and hosting, [Jest](https://jestjs.io/docs/en/getting-started) for testing.
 
-[React Bootstrap](https://react-bootstrap.github.io/getting-started/introduction) for the UI framework, [Docker](https://docs.docker.com/) for container-support
+[React Bootstrap](https://react-bootstrap.github.io/getting-started/introduction) for the UI framework, [Docker](https://docs.docker.com/) for container support.
 
 ## Installation
 ### Installing the dependencies
@@ -67,20 +67,22 @@ To stop the container, you can either enter the following in Command Prompt:
 
 ...or stop it through the Docker Desktop client.
 
+### Testing
+To run this program's tests, run `npm test` in the root directory. Use `npm test -- --coverage` to generate a coverage report, or `npm test -- --verbose` to see individual test results.
+
 ## Solving the problem
 1. React via `create-react-app` was used due to its familiarity and easy-of-use.
 1. I decided to go with a calculator that uses text input instead of buttons, because I believe the former can potentially be easier to use and more useful.
-    1. Because of this, I had to choose how I would do the calculations themselves. eval(), although risky, was chosen so that I wouldn't have to dedicate time to writing a function for each arithmetic operation.
-    1. Since eval() is being used, I've included code that sanitizes the input to minimize security risks.
+    1. Because of this, I had to choose how I would do the calculations themselves. `eval()`, although risky, was chosen so that I wouldn't have to dedicate time to writing a function for each arithmetic operation.
+    1. Since `eval()` is being used, I've included code that sanitizes the input to minimize security risks.
 1. To keep the calculations persistent between sessions, I decided to use a database. I chose Firebase instead of the more familiar MongoDB because the latter would require me to use Web Sockets or GraphQL to keep the calculations synced among users.
     1. Firebase's Realtime Database meant I wouldn't have to use additional libraries.
     1. I would also be able to host this program using Firebase.
-1. I've included a basic notification system that lets the user know if an error has occurred. The errors from eval() are somewhat cryptic, so each error is prefixed by a custom error message.
+1. I've included a basic notification system that lets the user know if an error has occurred. The errors from `eval()` are somewhat cryptic, so each error is prefixed by a custom error message.
 1. To improve the user experience, Bootstrap was used as the UI framework. This made the notification system easier to implement due to React Bootstrap's built-in components.
-1. Jest was used to implement basic unit tests, which ensured that the components were all functioning. Currently at 100% coverage.
 
 ## Future considerations
 There are several things I couldn't implement due to time contraints, but would be worth considering for the future:
 1. More thorough error handling. The current implementation doesn't catch everything, and I've yet to test how it handles asynchronous operations.
-1. Incorporating Bootstrap further. For example, transitions could be used, and a spinner could indicate if the calculations haven't loaded yet.
-1. Additional testing. Integration tests should be used to check Firebase functionality. The opening/closing of a notification could also be tested.
+1. Incorporating Bootstrap further. For example, transitions could be used, and a spinner could indicate if the calculations haven't loaded yet. The page could also look nicer on mobile browsers.
+1. Additional testing, since coverage isn't ideal. Integration tests should be used to check Firebase functionality. The opening/closing of a notification could also be tested.

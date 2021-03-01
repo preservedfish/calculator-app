@@ -19,7 +19,9 @@ firebase.auth().signInAnonymously();
 const db = firebase.database();
 
 const createCalculation = (calculation) => {
+  // Regex limits input to digits and math operators
   const sanitizedInput = calculation.replace(/[^0-9*/%.()+-]/gim, '').trim();
+
   // eslint-disable-next-line no-eval
   const result = eval(sanitizedInput);
   db.ref('calculations').push({
@@ -29,15 +31,22 @@ const createCalculation = (calculation) => {
 };
 
 const getCalculations = (setCalculations) => {
+  // Listener that triggers once then every time the data changes
   db.ref('calculations').on('value', (snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
+
+      /* Array is reversed so that most recent calculations are first
+      In the database, the calculation objects are the values of id keys
+      So nested objects are turned into normal objects with a new id property
+      */
       const transformedData = Object.keys(data)
         .map((key) => ({
           id: key,
           ...data[key],
         }))
         .reverse();
+
       setCalculations(
         transformedData.slice(0, transformedData.length <= 10 ? undefined : 10)
       );
