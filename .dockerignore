@@ -7,5 +7,10 @@ coverage
 # production
 build
 
+# firebase
+.firebase
+.firebaserc
+firebase.json
+
 # env variables
 .env

@@ -1,6 +1,6 @@
 # Calculator App
 
-A calculator app built for an exercise. Uses React and Firebase. 
+A calculator app built for an exercise. Mainly uses React and Firebase. Hosted here: https://calculator-56c99.web.app/
 
 The last 10 calculations are displayed and synced among users. The calculator supports basic Javascript arithmetic, `+, -, *, **, /, %`.
 
@@ -74,6 +74,7 @@ To stop the container, you can either enter the following in Command Prompt:
     1. Since eval() is being used, I've included code that sanitizes the input to minimize security risks.
 1. To keep the calculations persistent between sessions, I decided to use a database. I chose Firebase instead of the more familiar MongoDB because the latter would require me to use Web Sockets or GraphQL to keep the calculations synced among users.
     1. Firebase's Realtime Database meant I wouldn't have to use additional libraries.
+    1. I would also be able to host this program using Firebase.
 1. I've included a basic notification system that lets the user know if an error has occurred. The errors from eval() are somewhat cryptic, so each error is prefixed by a custom error message.
 1. To improve the user experience, Bootstrap was used as the UI framework. This made the notification system easier to implement due to React Bootstrap's built-in components.
 1. Jest was used to implement basic unit tests, which ensured that the components were all functioning. Currently at 100% coverage.
