@@ -16,6 +16,7 @@ const App = () => {
       firebaseService.getCalculations(setCalculations);
     } catch (error) {
       setAlert(error.message);
+      setShow(true);
     }
   }, [newCalculation]);
 
