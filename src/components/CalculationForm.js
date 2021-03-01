@@ -27,8 +27,8 @@ const CalculationForm = ({
     </Form.Text>
     <Form.Text>
       <i>
-        Past calculations are hidden to first-time visitors unless they enter a
-        calculation or refresh the page.
+        Past calculations are hidden on your first visit until you enter
+        something.
       </i>
     </Form.Text>
   </Form>
