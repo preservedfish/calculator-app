@@ -67,7 +67,7 @@ To stop the container, you can either enter the following in Command Prompt:
 
 ...or stop it through the Docker Desktop client.
 
-### Testing
+## Testing
 To run this program's tests, run `npm test` in the root directory. Use `npm test -- --coverage` to generate a coverage report, or `npm test -- --verbose` to see individual test results.
 
 ## Solving the problem
@@ -86,3 +86,6 @@ There are several things I couldn't implement due to time contraints, but would 
 1. More thorough error handling. The current implementation doesn't catch everything, and I've yet to test how it handles asynchronous operations.
 1. Incorporating Bootstrap further. For example, transitions could be used, and a spinner could indicate if the calculations haven't loaded yet. The page could also look nicer on mobile browsers.
 1. Additional testing, since coverage isn't ideal. Integration tests should be used to check Firebase functionality. The opening/closing of a notification could also be tested.
+
+## License
+This project is licensed under the terms of the MIT license.
