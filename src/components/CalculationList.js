@@ -7,6 +7,7 @@ const CalculationList = ({ calculations }) => (
     <ListGroup variant="flush">
       {calculations.map((object) =>
         calculations.indexOf(object) === 0 ? (
+          // First calculation is active, making it blue
           <ListGroup.Item active key={object.id}>
             {object.calculation} = {object.result}
           </ListGroup.Item>
