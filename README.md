@@ -56,7 +56,7 @@ Check that Docker is open and that your current directory is this program, then 
 
 ### Running a container
     docker run -e REACT_APP_API_KEY=phony-value -e REACT_APP_AUTH_DOMAIN=phony-value -e REACT_APP_PROJECT_ID=phony-value -e REACT_APP_STORAGE_BUCKET=phony-value -e REACT_APP_MESSAGING_SENDER_ID=phony-value -e REACT_APP_APP_ID=phony-value -p 3000:3000 calculator-app
-Running a container is a bit more involved. You will enter the above command after the image has been created, but you'll also have to insert all of the values in your Firebase's config as environment variables. Replace each instance of `phoney-value` in the above command with the appropriate value.
+Running a container is a bit more involved. You will enter the above command after the image has been created, but you'll also have to insert all of the values in your Firebase's config as environment variables. Replace each instance of `phony-value` in the above command with the appropriate value.
 
 After the container is running, open http://localhost:3000 in a browser to access the calculator.
 
