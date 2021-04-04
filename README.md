@@ -51,7 +51,7 @@ Either way, once you're done you just need to run `npm start` and access the pro
 You can also run this program in a container via [Docker](https://www.docker.com/). The instructions will assume that you have Docker installed and already took care of registering a project with Firebase.
 
 ### Building an image
-    docker build -t calculator-app.
+    docker build -t calculator-app .
 Check that Docker is open and that your current directory is this program, then run the above command. This will create an image called calculator-app with a size around 573MB.
 
 ### Running a container
